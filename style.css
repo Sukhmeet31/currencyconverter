@@ -1,0 +1,242 @@
+/* === Google Font Removed — use system fonts === */
+
+/* === Root Variables === */
+:root {
+  --bg-light: #f5f7fa;
+  --bg-dark: #121212;
+
+  --card-light: #ffffff;
+  --card-dark: #1f1f1f;
+
+  --text-light: #1a1a1a;
+  --text-dark: #f2f2f2;
+
+  --accent: #d46aff;
+  --accent-hover: #a542d6;
+
+  --border-light: #ccc;
+  --border-dark: #333;
+
+  --shadow: rgba(0, 0, 0, 0.1);
+
+  --font: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* === Base Reset === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  transition: all 0.3s ease;
+}
+
+/* === Dark Mode Class === */
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* === Container === */
+.container {
+  background: var(--card-light);
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px var(--shadow);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+body.dark .container {
+  background: var(--card-dark);
+  border: 1px solid var(--border-dark);
+}
+
+/* === Animated Gradient Border === */
+.container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #d46aff, #a542d6, #d46aff);
+  background-size: 400% 400%;
+  animation: gradientFlow 8s ease infinite;
+  z-index: -1;
+  border-radius: 18px;
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+.container:hover::before {
+  opacity: 1;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Header === */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, #d46aff, #a542d6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* === Toggle Dark Mode Button === */
+#toggleDarkMode {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+#toggleDarkMode:hover {
+  transform: scale(1.1);
+}
+
+/* === Form Elements === */
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  background-color: #f0f0f0;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+body.dark form input,
+body.dark form select {
+  background-color: #2a2a2a;
+  color: var(--text-dark);
+  border: 1px solid var(--border-dark);
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
+}
+
+form button {
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  opacity: 0.95;
+}
+
+/* === Result Text === */
+#result {
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-top: 5px;
+}
+
+/* === History Section === */
+.history-section h2 {
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 5px;
+  color: var(--accent);
+}
+
+body.dark .history-section h2 {
+  border-color: var(--border-dark);
+}
+
+#historyList {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#historyList li {
+  font-size: 0.95rem;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border-light);
+  color: #444;
+}
+
+body.dark #historyList li {
+  color: #ccc;
+  border-color: var(--border-dark);
+}
+
+#clearHistory {
+  padding: 10px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#clearHistory:hover {
+  background: darkred;
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  form input,
+  form select,
+  form button {
+    font-size: 0.95rem;
+  }
+}

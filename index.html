@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Add in <head> tag -->
+
+
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Currency Converter</h1>
+      <button id="toggleDarkMode">🌙 Dark Mode</button>
+    </header>
+
+    <form id="converter-form">
+      <input type="number" id="amount" placeholder="Enter amount" required />
+
+      <div class="dropdowns">
+        <select id="fromCurrency"></select>
+        <select id="toCurrency"></select>
+      </div>
+
+      <button type="submit">Convert</button>
+    </form>
+
+    <div id="result"></div>
+
+    <section class="history-section">
+      <h2>Conversion History</h2>
+      <ul id="historyList"></ul>
+      <button id="clearHistory">Clear History</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
